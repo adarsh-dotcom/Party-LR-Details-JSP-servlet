@@ -109,9 +109,9 @@ public class Party_Detail  extends HttpServlet{
 	        
 	        catch (Exception e) {
 	            e.printStackTrace();
-//	            response.setContentType("text/html");
-//	            out.print("<h3 style='color:green;'>Exception Occured: "+e.getMessage()+"</h3>");
-//	            
+	            response.setContentType("text/html");
+	            out.print("<h3 style='color:green;'>Exception Occured: "+e.getMessage()+"</h3>");
+	            
 	            RequestDispatcher rd = request.getRequestDispatcher("partyDetails.jsp");
 	            rd.include(request, response);
 	        }

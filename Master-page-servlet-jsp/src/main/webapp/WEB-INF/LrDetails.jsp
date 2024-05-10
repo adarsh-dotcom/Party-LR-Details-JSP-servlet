@@ -54,26 +54,7 @@
     </style>
 </head>
 <body>
-  <h1>LR Details</h1>
-    <form action="lrDetails" method="post">
-        <label for="lrNo">LR No:</label>
-        <input type="text" id="lrNo" name="lrNo" required><br><br>
-        
-        <label for="consigner">Consigner:</label>
-        <input type="text" id="consigner" name="consigner" required><br><br>
-        
-        <label for="consignee">Consignee:</label>
-        <input type="text" id="consignee" name="consignee" required><br><br>
-        
-        <label for="item">Item:</label>
-        <input type="text" id="item" name="item" required><br><br>
-        
-        <label for="amount">Amount:</label>
-        <input type="text" id="amount" name="amount" required><br><br>
-        
-        <input type="submit" value="Save">
-    </form>
-    
+ 
  
 </body>
 </html>

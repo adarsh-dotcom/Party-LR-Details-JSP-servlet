@@ -18,5 +18,27 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/LENOVO/Downloads/jar_files/mysql-connector-java-8.0.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/LENOVO/Downloads/gson-2.10.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/LENOVO/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar" sourcepath="C:/Users/LENOVO/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="gson-2.10.1.jar"/>
+			<attribute name="maven.groupId" value="com.google.code.gson"/>
+			<attribute name="maven.artifactId" value="gson"/>
+			<attribute name="maven.version" value="2.10.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/MyWorkspace/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/LENOVO/.m2/repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar" sourcepath="C:/Users/LENOVO/.m2/repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+			<attribute name="maven.groupId" value="javax.servlet"/>
+			<attribute name="maven.artifactId" value="javax.servlet-api"/>
+			<attribute name="maven.version" value="4.0.1"/>
+			<attribute name="maven.scope" value="provided"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

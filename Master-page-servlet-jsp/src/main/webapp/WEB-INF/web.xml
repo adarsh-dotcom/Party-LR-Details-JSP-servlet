@@ -59,4 +59,24 @@
     <servlet-name>MessageSuccess</servlet-name>
     <url-pattern>/MessageSuccess</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewFile</display-name>
+    <servlet-name>NewFile</servlet-name>
+    <servlet-class>NewFile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewFile</servlet-name>
+    <url-pattern>/NewFile</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserPrac</display-name>
+    <servlet-name>UserPrac</servlet-name>
+    <servlet-class>com.master.page.servlet.jsp.UserPrac</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserPrac</servlet-name>
+    <url-pattern>/UserPrac</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src ="lrjson.js" type="text/javascript"></script>
  <style>
         /* Add your CSS styles here */
         body {
@@ -59,7 +60,7 @@
         <form action="partyDet" method="post">
             <label for="partyCode">Party Code:</label>
             <input type="text" id="partyCode" name="Party_code" required>
-
+           
             <label for="partyName">Party Name:</label>
             <input type="text" id="partyName" name="Party_Name" required>
 
@@ -71,13 +72,20 @@
 
             <label for="state">State:</label>
             <input type="text" id="state" name="State" required>
-
+            
+            
             <label for="pincode">Pincode:</label>
             <input type="number" id="pincode" name="Pincode" required>
 
-           <input type="submit" value="Save">
+          <input type="submit" value="Save" onclick="showAlert()">
+
+           
         </form>
     </div>
+    
+    
+    
+   
     
 
 </body>

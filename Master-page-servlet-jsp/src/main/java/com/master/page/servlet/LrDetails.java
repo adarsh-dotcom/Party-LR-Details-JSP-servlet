@@ -1,23 +1,36 @@
-package com.master.page.servlet.jsp;
+package com.master.page.servlet;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import java.applet.*;
+
+
+
+
+
 
 @WebServlet("/anotherServlet")
-public class LrDetail extends HttpServlet {
+public class LrDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public LrDetail() {
+    public LrDetails() {
         super();
 
     }
@@ -31,6 +44,22 @@ public class LrDetail extends HttpServlet {
 	        String myconsignee = request.getParameter("consignee");
 	        String myitem = request.getParameter("item");
 	        String myamount = request.getParameter("amount");
+	        
+
+	        // Construct JSON response
+	        Gson gson = new Gson();
+	        JsonObject jsonObject = new JsonObject();
+	        jsonObject.addProperty("lrno", mylrno);
+	        jsonObject.addProperty("consigner", myconsigner);
+	        jsonObject.addProperty("consignee", myconsignee);
+	        jsonObject.addProperty("item", myitem);
+	        jsonObject.addProperty("amount", myamount);
+	        
+	        String jsonResponse = gson.toJson(jsonObject);
+
+	        // Write JSON response
+	        out.print(jsonResponse);
+	        out.flush();
 	        
 	        try {
 	            Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,10 +77,12 @@ public class LrDetail extends HttpServlet {
 	         
 	            
 	            if (count > 0) {
-	                response.setContentType("text/html");
-	                out.print("<h3 style='color:green;'>User registered successfully</h3>");
-	                
-	                RequestDispatcher rd = request.getRequestDispatcher("/formSucess.jsp");
+	            	
+	            
+	            	
+	            	
+	              	response.setContentType("text/html");
+                RequestDispatcher rd = request.getRequestDispatcher("/formSucess.jsp");
 	                rd.include(request, response);
 
 	            
@@ -67,7 +98,7 @@ public class LrDetail extends HttpServlet {
 	        catch (Exception e) {
 	            e.printStackTrace();
 	            response.setContentType("text/html");
-	            out.print("<h3 style='color:green;'>Exception Occured: "+e.getMessage()+"</h3>");
+            out.print("<h3 style='color:green;'>Exception Occurred: "+e.getMessage()+"</h3>");
 	            
 	            RequestDispatcher rd = request.getRequestDispatcher("/LrDetails.jsp");
 	            rd.include(request, response);

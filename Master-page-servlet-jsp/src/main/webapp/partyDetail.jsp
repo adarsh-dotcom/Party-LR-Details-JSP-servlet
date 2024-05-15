@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +56,7 @@
 <body>
 <div class="container">
         <h1>Party Details</h1>
-        <form action="partyDet" method="post">
+        <form action="partyDe" method="post">
             <label for="partyCode">Party Code:</label>
             <input type="text" id="partyCode" name="Party_code" required>
            
@@ -77,7 +76,7 @@
             <label for="pincode">Pincode:</label>
             <input type="number" id="pincode" name="Pincode" required>
 
-          <input type="submit" value="Save" onclick="showAlert()">
+          <input type="submit" value="Save" onclick="">
 
            
         </form>

@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="java.util.List"%>
@@ -88,7 +88,7 @@ select {
 <body>
 	<div class="container">
 		<h1>LR Details Form</h1>
-		<form action="anotherServlet" method="post" id="myForm">
+		<form action="anotherServlett" method="post" id="myForm">
 
 
 			<label for="lrNo">Lr No:</label> <input type="text" id="lrNo"

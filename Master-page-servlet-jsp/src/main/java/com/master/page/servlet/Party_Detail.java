@@ -19,15 +19,15 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/anotherServlett")
 public class Party_Detail  extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	public Party_Detail() {
+		super();
+	} 
 	
 	
 	
-	    private static final long serialVersionUID = 1L;
 	
 
-	    public Party_Detail() {
-	        super();
-	    } 
 
 	 
 	    @Override

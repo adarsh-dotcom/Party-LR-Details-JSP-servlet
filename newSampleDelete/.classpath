@@ -39,5 +39,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/LENOVO/Downloads/javax.servlet-api.jar (1)/javax.servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/MyWorkspace/mysql-connector-java-8.0.13.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

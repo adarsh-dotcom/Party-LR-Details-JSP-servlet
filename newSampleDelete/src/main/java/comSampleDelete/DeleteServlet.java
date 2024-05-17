@@ -9,15 +9,15 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.json.JSONObject;
+
+
 
 @WebServlet("/SubmitFormData")
 public class DeleteServlet extends HttpServlet {
@@ -55,7 +55,7 @@ public class DeleteServlet extends HttpServlet {
             	  
             	  
             	  // Now let's make an API call
-                  String apiUrl = "https://jsonplaceholder.typicode.com/todos/1"; // Replace with your API endpoint
+                  String apiUrl = "https://jsonplaceholder.typicode.com/todos/1"; // replace with your api
                   URL url = new URL("https://jsonplaceholder.typicode.com/todos/1");
                   HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                   conn.setRequestMethod("GET");

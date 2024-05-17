@@ -176,5 +176,5 @@ input[type="button"]:hover {
 										});
 					});
 </script>
-</html>
+
 </html>

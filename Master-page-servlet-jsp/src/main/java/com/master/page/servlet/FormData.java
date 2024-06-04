@@ -6,7 +6,7 @@ public class FormData {
      private String consignee;
      private String item;
      private String amount;
-     
+
      public FormData(String lrNo, String consigner, String consignee, String item, String amount) {
          this.lrNo = lrNo;
          this.consigner = consigner;

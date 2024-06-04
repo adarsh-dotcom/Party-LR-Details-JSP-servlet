@@ -6,8 +6,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import java.applet.*;
 
 
 
@@ -28,7 +25,7 @@ import java.applet.*;
 @WebServlet("/anotherServlet")
 public class LrDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 
     public LrDetails() {
         super();
@@ -36,6 +33,7 @@ public class LrDetails extends HttpServlet {
     }
 
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 PrintWriter out = response.getWriter();
 
@@ -44,7 +42,7 @@ public class LrDetails extends HttpServlet {
 	        String myconsignee = request.getParameter("consignee");
 	        String myitem = request.getParameter("item");
 	        String myamount = request.getParameter("amount");
-	        
+
 
 	        // Construct JSON response
 	        Gson gson = new Gson();
@@ -54,13 +52,13 @@ public class LrDetails extends HttpServlet {
 	        jsonObject.addProperty("consignee", myconsignee);
 	        jsonObject.addProperty("item", myitem);
 	        jsonObject.addProperty("amount", myamount);
-	        
+
 	        String jsonResponse = gson.toJson(jsonObject);
 
 	        // Write JSON response
 	        out.print(jsonResponse);
 	        out.flush();
-	        
+
 	        try {
 	            Class.forName("com.mysql.cj.jdbc.Driver");
 	            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/MasterPage", "root","Aadi@123");
@@ -71,39 +69,39 @@ public class LrDetails extends HttpServlet {
 	            ps.setString(3, myconsignee);
 	            ps.setString(4, myitem);
 	            ps.setString(5, myamount);
-	           
+
 
 	            int count = ps.executeUpdate();
-	         
-	            
+
+
 	            if (count > 0) {
-	            	
-	            
-	            	
-	            	
+
+
+
+
 	              	response.setContentType("text/html");
                 RequestDispatcher rd = request.getRequestDispatcher("/formSucess.jsp");
 	                rd.include(request, response);
 
-	            
+
 	            } else {
 	            	response.setContentType("text/html");
 	                out.print("<h3 style='color:green;'>User Not registered successfully</h3>");
-	                
+
 	                RequestDispatcher rd = request.getRequestDispatcher("/LrDetails.jsp");
 	                rd.include(request, response);
 	            }
 	        }
-	        
+
 	        catch (Exception e) {
 	            e.printStackTrace();
 	            response.setContentType("text/html");
             out.print("<h3 style='color:green;'>Exception Occurred: "+e.getMessage()+"</h3>");
-	            
+
 	            RequestDispatcher rd = request.getRequestDispatcher("/LrDetails.jsp");
 	            rd.include(request, response);
 	        }
 	    }
 	}
-	       
+
 

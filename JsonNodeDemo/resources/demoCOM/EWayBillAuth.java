@@ -8,13 +8,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.security.Key;
+import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -28,7 +29,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 public class EWayBillAuth {
 	static String folderPath = "C:\\MyWorkspace\\JsonNodeDemo";
 	static byte[] appKey;
@@ -41,12 +41,11 @@ public class EWayBillAuth {
 	static String sek = "id415OlTcwcwAlrhIMFRxFdD+QAh+oAzZWJkUtpyeTQ\\u003d";
 
 	public static void main(String[] args) {
-		
+
 		authtoken = "";
 		folderPath = getPath();
 		ObjectMapper objectMapper = new ObjectMapper();
 
-	
 		try {
 			String appKey = Base64.getEncoder().encodeToString(createAESKey());
 			String payload = "{\"action\":\"ACCESSTOKEN\",\"username\":\"" + userName + "\",\"password\":\"" + password
@@ -78,10 +77,9 @@ public class EWayBillAuth {
 				responseText = output;
 			}
 			System.out.println("Response:" + responseText);
-               
-           
+
 			String status = objectMapper.readTree(responseText).get(responseText).asText();
-			
+
 			if (status.equals("0")) {
 				String errorDesc = "";
 
@@ -100,31 +98,31 @@ public class EWayBillAuth {
 				sek = decrptBySymmetricKeySEK(sek);
 				System.out.println("Decrypted SEK: " + sek);
 			}
-			httpClient.getConnectionManager().shutdown();	
+			httpClient.getConnectionManager().shutdown();
 		} catch (Exception ex) {
 			Logger.getLogger(EWayBillAuth.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 
-//	public static PublicKey getPublicKey() throws FileNotFoundException, IOException, NoSuchAlgorithmException, InvalidKeySpecException
-//		        {
-//		      FileInputStream in = new FileInputStream("<Path to file>/publickey.pem");
-//		      byte[] keyBytes = new byte[in.available()];
-//		      in.read(keyBytes);
-//		      in.close();
-//		      String pubKey = new String(keyBytes, "UTF-8");
-//		      pubKey = pubKey.replaceAll("(-+BEGIN PUBLIC KEY-+\\r?\\n|-+END PUBLIC KEY-+\\r?\\n?)", "");
-//		      //not recom to use 
-//		      BASE64Decoder decoder = new ------------------------------();
-//		      keyBytes = decoder.decodeBuffer(pubKey);
-//		      X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
-//		      KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-//		      PublicKey publicKey = keyFactory.generatePublic(spec);
-//		      return publicKey;
-//		      }
+	public static PublicKey getPublicKey()
+			throws FileNotFoundException, IOException, NoSuchAlgorithmException, InvalidKeySpecException {
+		FileInputStream in = new FileInputStream("<Path to file>/publickey.pem");
+		byte[] keyBytes = new byte[in.available()];
+		in.read(keyBytes);
+		in.close();
+		String pubKey = new String(keyBytes, "UTF-8");
+		pubKey = pubKey.replaceAll("(-+BEGIN PUBLIC KEY-+\\r?\\n|-+END PUBLIC KEY-+\\r?\\n?)", "");
+
+	    byte[] decodedKeyBytes = Base64.getDecoder().decode(pubKey);
+		
+		X509EncodedKeySpec spec = new X509EncodedKeySpec(decodedKeyBytes);
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		PublicKey publicKey = keyFactory.generatePublic(spec);
+		return publicKey;
+	}
 
 	public static byte[] createAESKey() {
-		try { 
+		try {
 			KeyGenerator gen = KeyGenerator.getInstance("AES");
 			gen.init(128);
 			/* 128-bit AES */
@@ -137,7 +135,7 @@ public class EWayBillAuth {
 	}
 
 	private static String encryptAsymmentricKey(String clearText) throws Exception {
-		
+
 		PublicKey publicKeys = getPublicKey();
 		Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1PADDING");
 		cipher.init(Cipher.ENCRYPT_MODE, publicKeys);

@@ -145,7 +145,8 @@ public class EWayBillAuth {
 	}
 
 	public static String getPath() {
-		String folderPath = "C:\\Users\\LENOVO\\git\\repository2\\EwayBillApi1";
+		String folderPath = "C:\\Users\\LENOVO\\git\\repository2\\qEwayBillApi1";
+		
 		try {
 			File tempFile = new File(
 					EWayBillAuth.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
